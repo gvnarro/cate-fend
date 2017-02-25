@@ -41,7 +41,6 @@ li {
 input {
   border: 1px solid #CD040B;
   font-size: 14px;
-  height: 40px;
   outline: none;
   padding: 8px;
 }
@@ -53,13 +52,12 @@ button {
   cursor: pointer;
   display: inline-block;
   font-size: 14px;
-  height: 40px;
-  padding: 8px 18px;
+  padding: 9px 9px;
   text-decoration: none;
 }
 
 button:hover {
-  background-color: #28739e;
+  background-color: #CD0000;
 }
 
 /* platform specific */
