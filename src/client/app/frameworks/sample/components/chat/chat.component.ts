@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 @Component({
     selector: 'chat',
     template: `
-        <div class="small-chat-box fadeInRight animated">
+        <div [hidden]="!isOpen" class="small-chat-box fadeInRight animated">
 
             <div class="heading" draggable="true">
                 <small class="chat-date pull-right">
@@ -57,25 +57,12 @@ import { Component } from '@angular/core';
                         The standard chunk of Lorem Ipsum
                     </div>
                 </div>
-                <div class="left">
-                    <div class="author-name">
-                        Mick Lane
-                        <small class="chat-date">
-                            08:45 pm
-                        </small>
-                    </div>
-                    <div class="chat-message active">
-                        I belive that. Lorem Ipsum is simply dummy text.
-                    </div>
-                </div>
-
-
             </div>
             <div class="form-chat">
                 <div class="input-group input-group-sm">
                     <input type="text" class="form-control">
                     <span class="input-group-btn"> <button
-                        class="btn btn-primary" type="button">Send
+                        class="btn btn-primary" type="button">...
                 </button> </span></div>
             </div>
 
@@ -83,8 +70,9 @@ import { Component } from '@angular/core';
         <div id="small-chat">
 
             <span class="badge badge-warning pull-right">5</span>
-            <a class="open-small-chat">
-                <i class="fa fa-comments"></i>
+            <a class="open-small-chat" (click)="isOpen=!isOpen">
+                <i [hidden]="isOpen" class="fa fa-comments">+</i>
+                <i [hidden]="!isOpen" class="fa fa-comments">-</i>
 
             </a>
         </div>
@@ -106,7 +94,7 @@ import { Component } from '@angular/core';
   height: 38px;
   width: 38px;
   display: block;
-  background: #1ab394;
+  background: #CD040B;
   padding: 9px 8px;
   text-align: center;
   color: #fff;
@@ -114,10 +102,9 @@ import { Component } from '@angular/core';
 }
 .open-small-chat:hover {
   color: white;
-  background: #1ab394;
+  background: #CD040B;
 }
 .small-chat-box {
-  display: none;
   position: fixed;
   bottom: 20px;
   right: 75px;
@@ -149,7 +136,7 @@ import { Component } from '@angular/core';
   font-weight: normal;
 }
 .small-chat-box .content {
-  padding: 15px 15px;
+  padding: 5px 5px;
 }
 .small-chat-box .content .author-name {
   font-weight: bold;
@@ -169,7 +156,7 @@ import { Component } from '@angular/core';
   margin-bottom: 10px;
 }
 .small-chat-box .content .chat-message.active {
-  background: #1ab394;
+  background: #CD040B;
   color: #fff;
 }
 .small-chat-box .content .left {
@@ -187,11 +174,40 @@ import { Component } from '@angular/core';
   float: right;
 }
 .small-chat-box .form-chat {
-  padding: 10px 10px;
+  padding: 5px 1px;
+}
+
+
+
+.badge {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #777;
+    border-radius: 10px;
+}
+
+.label-warning, .badge-warning {
+    background-color: #f8ac59;
+    color: #FFFFFF;
 }
   `],
 })
 
 export class ChatComponent {
+    isOpen: boolean = false;
+    constructor(el: ElementRef) {
 
+    }
+
+    ngOnInit() {
+
+    }
 }
